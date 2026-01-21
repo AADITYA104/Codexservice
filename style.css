@@ -1,13 +1,18 @@
+/* --- CSS VARIABLES (User Palette) --- */
 :root {
-    --primary-color: #00d2ff;
-    --secondary-color: #3a7bd5;
-    --accent-color: #9d50bb;
-    --text-color: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.05);
+    --bg-color: #000000;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+
+    /* Neon Accents */
+    --neon-purple: #9D00FF;
+    --neon-magenta: #D500F9;
+    --neon-orange: #FF6D00;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-hover-bg: rgba(255, 255, 255, 0.15);
-    --font-robot: 'Roboto', sans-serif;
-    --font-montserrat: 'Montserrat', sans-serif;
+    --glass-blur: 20px;
 }
 
 * {
@@ -17,372 +22,174 @@
 }
 
 body {
-    font-family: var(--font-montserrat);
-    color: var(--text-color);
-    background: #0f0c29;
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    position: relative;
+    /* Hide scrollbars for animation */
 }
 
-/* Background Animation */
-.background-animation {
+/* --- BACKGROUND ANIMATION CANVAS --- */
+#tech-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    overflow: hidden;
-    background: radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.2), rgba(15, 23, 42, 0) 50%);
+    /* Puts animation behind content */
+    background: radial-gradient(circle at center, #11001c 0%, #000000 100%);
 }
 
-.background-animation::before,
-.background-animation::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-    opacity: 0.2;
-    border-radius: 50%;
-    animation: float 20s infinite ease-in-out alternate;
-}
-
-.background-animation::before {
-    top: -100px;
-    left: -100px;
-}
-
-.background-animation::after {
-    bottom: -100px;
-    right: -100px;
-    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-    animation-delay: -10s;
-}
-
-@keyframes float {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-
-    100% {
-        transform: translate(100px, 100px) rotate(20deg);
-    }
-}
-
-/* Layout */
-header {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.header-content {
-    display: inline-block;
-    padding: 30px 60px;
-    border-radius: 20px;
-    animation: fadeInDown 1s ease-out;
-}
-
-.company-name {
-    font-family: var(--font-robot);
-    font-size: 4rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    background: linear-gradient(135deg, #fff 0%, #b3b3b3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-    margin-bottom: 10px;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
-}
-
-main {
-    padding: 40px 20px;
+/* --- LAYOUT CONTAINER --- */
+.container {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.section-title {
-    font-family: var(--font-montserrat);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 40px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    padding: 2rem;
     position: relative;
-    display: inline-block;
+    z-index: 1;
 }
 
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
-
-.content-wrapper {
-    padding: 50px;
-    border-radius: 30px;
+/* --- HEADER --- */
+header {
     text-align: center;
-    animation: fadeInUp 1s ease-out 0.3s backwards;
+    padding: 10vh 0 5vh;
 }
 
-/* Glossy Effect container */
-.glass-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+.brand-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--neon-orange);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: inline-block;
+    border: 1px solid rgba(255, 109, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 50px;
+    background: rgba(255, 109, 0, 0.05);
 }
 
-/* Services Grid */
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 30%, var(--text-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 span {
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-magenta));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- GRID --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-content: center;
+    gap: 24px;
+    margin-top: 4rem;
 }
 
-/* Candy Style Base */
-.service-card {
-    /* Blend mode to make colors pop over dark bg if needed, or just normal */
-    background: rgba(255, 255, 255, 0.05);
-    /* Fallback */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    /* Softer, candy-like radius */
-    padding: 25px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 110px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-family: var(--font-montserrat);
+/* --- GLASS CARDS --- */
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.service-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.6);
+/* Hover Glow Effect */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--neon-purple), var(--neon-magenta));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
 }
 
-/* Specific Candy Colors */
-.service-card:nth-child(1) {
-    /* Web Dev - Candy Blue */
-    background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(0, 242, 254, 0.2));
-    border-color: rgba(79, 172, 254, 0.4);
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(213, 0, 249, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(157, 0, 255, 0.2);
 }
 
-.service-card:nth-child(1):hover {
-    background: linear-gradient(135deg, rgba(79, 172, 254, 0.4), rgba(0, 242, 254, 0.4));
-    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
+.card:hover::before {
+    opacity: 0.05;
+    /* Subtle tint on hover */
 }
 
-.service-card:nth-child(2) {
-    /* App Dev - Candy Pink */
-    background: linear-gradient(135deg, rgba(255, 154, 158, 0.2), rgba(254, 207, 239, 0.2));
-    border-color: rgba(255, 154, 158, 0.4);
-}
-
-.service-card:nth-child(2):hover {
-    background: linear-gradient(135deg, rgba(255, 154, 158, 0.4), rgba(254, 207, 239, 0.4));
-    box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
-}
-
-.service-card:nth-child(3) {
-    /* Data Analytics - Candy Green */
-    background: linear-gradient(135deg, rgba(67, 233, 123, 0.2), rgba(56, 249, 215, 0.2));
-    border-color: rgba(67, 233, 123, 0.4);
-}
-
-.service-card:nth-child(3):hover {
-    background: linear-gradient(135deg, rgba(67, 233, 123, 0.4), rgba(56, 249, 215, 0.4));
-    box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3);
-}
-
-.service-card:nth-child(4) {
-    /* Data Recovery - Candy Orange */
-    background: linear-gradient(135deg, rgba(250, 112, 154, 0.2), rgba(254, 225, 64, 0.2));
-    border-color: rgba(250, 112, 154, 0.4);
-}
-
-.service-card:nth-child(4):hover {
-    background: linear-gradient(135deg, rgba(250, 112, 154, 0.4), rgba(254, 225, 64, 0.4));
-    box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3);
-}
-
-.service-card:nth-child(5) {
-    /* Home Automation - Candy Purple */
-    background: linear-gradient(135deg, rgba(161, 140, 209, 0.2), rgba(251, 194, 235, 0.2));
-    border-color: rgba(161, 140, 209, 0.4);
-}
-
-.service-card:nth-child(5):hover {
-    background: linear-gradient(135deg, rgba(161, 140, 209, 0.4), rgba(251, 194, 235, 0.4));
-    box-shadow: 0 10px 30px rgba(161, 140, 209, 0.3);
-}
-
-.service-card:nth-child(6) {
-    /* Office Automation - Candy Teal */
-    background: linear-gradient(135deg, rgba(0, 198, 251, 0.2), rgba(0, 91, 234, 0.2));
-    border-color: rgba(0, 198, 251, 0.4);
-}
-
-.service-card:nth-child(6):hover {
-    background: linear-gradient(135deg, rgba(0, 198, 251, 0.4), rgba(0, 91, 234, 0.4));
-    box-shadow: 0 10px 30px rgba(0, 198, 251, 0.3);
-}
-
-.service-card:nth-child(7) {
-    /* Brand Designing - Candy Salmon */
-    background: linear-gradient(135deg, rgba(255, 117, 140, 0.2), rgba(255, 126, 179, 0.2));
-    border-color: rgba(255, 117, 140, 0.4);
-}
-
-.service-card:nth-child(7):hover {
-    background: linear-gradient(135deg, rgba(255, 117, 140, 0.4), rgba(255, 126, 179, 0.4));
-    box-shadow: 0 10px 30px rgba(255, 117, 140, 0.3);
-}
-
-.service-card:nth-child(8) {
-    /* UI/UX - Candy Violet */
-    background: linear-gradient(135deg, rgba(196, 113, 237, 0.2), rgba(246, 79, 89, 0.2));
-    border-color: rgba(196, 113, 237, 0.4);
-}
-
-.service-card:nth-child(8):hover {
-    background: linear-gradient(135deg, rgba(196, 113, 237, 0.4), rgba(246, 79, 89, 0.4));
-    box-shadow: 0 10px 30px rgba(196, 113, 237, 0.3);
-}
-
-.service-card:nth-child(9) {
-    /* Digital Marketing - Candy Gold */
-    background: linear-gradient(135deg, rgba(246, 211, 101, 0.2), rgba(253, 160, 133, 0.2));
-    border-color: rgba(246, 211, 101, 0.4);
-}
-
-.service-card:nth-child(9):hover {
-    background: linear-gradient(135deg, rgba(246, 211, 101, 0.4), rgba(253, 160, 133, 0.4));
-    box-shadow: 0 10px 30px rgba(246, 211, 101, 0.3);
-}
-
-.service-card:nth-child(10) {
-    /* Cloud Computing - Candy Sky */
-    background: linear-gradient(135deg, rgba(137, 247, 254, 0.2), rgba(102, 166, 255, 0.2));
-    border-color: rgba(137, 247, 254, 0.4);
-}
-
-.service-card:nth-child(10):hover {
-    background: linear-gradient(135deg, rgba(137, 247, 254, 0.4), rgba(102, 166, 255, 0.4));
-    box-shadow: 0 10px 30px rgba(137, 247, 254, 0.3);
-}
-
-.service-card:nth-child(11) {
-    /* AI Agent - Candy Magenta */
-    background: linear-gradient(135deg, rgba(240, 147, 251, 0.2), rgba(245, 87, 108, 0.2));
-    border-color: rgba(240, 147, 251, 0.4);
-}
-
-.service-card:nth-child(11):hover {
-    background: linear-gradient(135deg, rgba(240, 147, 251, 0.4), rgba(245, 87, 108, 0.4));
-    box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
-}
-
-.service-card:nth-child(12) {
-    /* Blockchain - Candy Emerald */
-    background: linear-gradient(135deg, rgba(11, 163, 96, 0.2), rgba(60, 186, 146, 0.2));
-    border-color: rgba(11, 163, 96, 0.4);
-}
-
-.service-card:nth-child(12):hover {
-    background: linear-gradient(135deg, rgba(11, 163, 96, 0.4), rgba(60, 186, 146, 0.4));
-    box-shadow: 0 10px 30px rgba(11, 163, 96, 0.3);
-}
-
-/* Removed Icon Styles */
-
-.service-card h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    /* Slightly bolder */
-    letter-spacing: 1.5px;
-    /* More letter spacing for elegance */
-    text-transform: uppercase;
-    /* Uppercase for a more premium label feel */
-    color: rgba(255, 255, 255, 0.9);
-    z-index: 2;
-    /* Ensure text is above glow */
-    transition: color 0.3s ease;
-}
-
-.service-card:hover h3 {
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+.card p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--neon-magenta);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Decoration Line */
+.line {
+    width: 40px;
+    height: 2px;
+    background: var(--neon-orange);
+    margin-top: 15px;
+    transition: width 0.3s ease;
+}
+
+.card:hover .line {
+    width: 100%;
+    background: var(--neon-purple);
+}
+
+/* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 40px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+    padding: 4rem 0;
+    color: var(--text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .company-name {
+/* Mobile Adjustments */
+@media(max-width: 768px) {
+    h1 {
         font-size: 2.5rem;
     }
 
-    .header-content {
-        padding: 20px;
-        width: 90%;
-    }
-
-    .content-wrapper {
-        padding: 30px 20px;
+    .container {
+        padding: 1rem;
     }
 }
