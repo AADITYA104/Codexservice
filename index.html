@@ -1,105 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeX Infotech | Future Tech</title>
+    <title>CodeX Infotech | Premium Digital Solutions</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <canvas id="tech-canvas"></canvas>
+    <!-- Fluid Background -->
+    <div class="fluid-bg">
+        <canvas id="particles-bg"></canvas>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <div class="container">
         <header>
-            <div class="brand-subtitle">// SYSTEM ONLINE</div>
+            <div class="brand-subtitle"><i data-lucide="zap" class="icon-sm"></i> SYSTEM ONLINE</div>
             <h1>CodeX <span>Infotech</span></h1>
-            <p class="hero-desc">Experience the next generation of digital solutions. We architect the future with
-                precision code and premium design.</p>
+            <p class="hero-desc">Experience the next generation of digital solutions. We architect the future with precision code and an ultra-premium bento box experience.</p>
         </header>
 
-        <div class="services-grid">
-            <div class="card">
-                <p>01 // CORE</p>
-                <h3>Web Development</h3>
-                <div class="line"></div>
+        <div class="bento-grid">
+            
+            <!-- 01 CORE (Large 2x2) -->
+            <div class="bento-item bento-large group" style="--accent: var(--accent-1);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="layout-template"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">01 // CORE</p>
+                        <h3>Web Development</h3>
+                        <p class="bento-desc">We architect high-performance, scalable web platforms with ultra-fluid frameworks that redefine user experience and drive global business growth.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>02 // MOBILE</p>
-                <h3>App Development</h3>
-                <div class="line"></div>
+            <!-- 02 AI Agent (Tall 1x2) -->
+            <div class="bento-item bento-tall group" style="--accent: var(--accent-2);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="bot"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">02 // NEURAL</p>
+                        <h3>AI Agent Engineering</h3>
+                        <p class="bento-desc">Autonomous LLM-powered multi-modal agents capable of extreme multi-step objective reasoning.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>03 // INSIGHTS</p>
-                <h3>Data Analytics</h3>
-                <div class="line"></div>
+            <!-- 03 Mobile (Wide 2x1) -->
+            <div class="bento-item bento-wide group" style="--accent: var(--accent-3);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner horizontal-layout">
+                    <div class="card-icon"><i data-lucide="smartphone"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">03 // MOBILE</p>
+                        <h3>App Development</h3>
+                        <p class="bento-desc">Native & cross-platform mobile experiences engineered for flawless fluid 120fps performance.</p>
+                    </div>
+                </div>
             </div>
 
-
-
-            <div class="card">
-                <p>04 // SMART</p>
-                <h3>Home Automation</h3>
-                <div class="line"></div>
+            <!-- 04 Data (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-4);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="bar-chart-3"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">04 // INSIGHTS</p>
+                        <h3>Data Analytics</h3>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>05 // WORKFLOW</p>
-                <h3>Office Automation</h3>
-                <div class="line"></div>
+            <!-- 05 Blockchain (Wide 2x1) -->
+            <div class="bento-item bento-wide group" style="--accent: var(--accent-1);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner horizontal-layout">
+                    <div class="card-icon"><i data-lucide="link"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">05 // DECENTRALIZED</p>
+                        <h3>Blockchain & Web3</h3>
+                        <p class="bento-desc">Deploying robust, extremely secure smart contract architectures.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>06 // IDENTITY</p>
-                <h3>Brand Designing</h3>
-                <div class="line"></div>
+            <!-- 06 Cloud (Tall 1x2) -->
+            <div class="bento-item bento-tall group" style="--accent: var(--accent-2);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="cloud"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">06 // SCALE</p>
+                        <h3>Cloud Computing</h3>
+                        <p class="bento-desc">Enterprise-grade cloud infrastructure spanning AWS, Azure, and Google Cloud with auto-scaling capabilities.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>07 // INTERFACE</p>
-                <h3>UI/UX Design</h3>
-                <div class="line"></div>
+             <!-- 07 UI/UX (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-3);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="layers"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">07 // INTERFACE</p>
+                        <h3>UI/UX Design</h3>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>08 // GROWTH</p>
-                <h3>Digital Marketing</h3>
-                <div class="line"></div>
+             <!-- 08 AI/ML (Large 2x2) -->
+            <div class="bento-item bento-large group" style="--accent: var(--accent-4);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="brain-circuit"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">08 // ALGORITHMS</p>
+                        <h3>AI & Machine Learning</h3>
+                        <p class="bento-desc">We explicitly train highly-customized predictive neural networks and deploy massive scale inferencing endpoints tailored to dominate your unique industry requirements.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>09 // SCALE</p>
-                <h3>Cloud Computing</h3>
-                <div class="line"></div>
+            <!-- 09 Digital Marketing (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-1);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">09 // GROWTH</p>
+                        <h3>Digital Mktg.</h3>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>10 // INTELLIGENCE</p>
-                <h3>AI Agent</h3>
-                <div class="line"></div>
+            <!-- 10 Project Management (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-2);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="kanban"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">10 // STRATEGY</p>
+                        <h3>Project Mgmt.</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 11 Home Auto (Wide 2x1) -->
+            <div class="bento-item bento-wide group" style="--accent: var(--accent-3);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner horizontal-layout">
+                    <div class="card-icon"><i data-lucide="home"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">11 // SMART</p>
+                        <h3>Home Automation</h3>
+                        <p class="bento-desc">Intelligent IoT ecosystems bridging cutting-edge devices into a single monolithic nervous system.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>11 // DECENTRALIZED</p>
-                <h3>Blockchain</h3>
-                <div class="line"></div>
+            <!-- 12 SEO (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-4);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="search-check"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">12 // DISCOVERY</p>
+                        <h3>SEO Analysis</h3>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <p>12 // NEURAL</p>
-                <h3>AI & Machine Learning</h3>
-                <div class="line"></div>
+             <!-- 13 Brand (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-1);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="pen-tool"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">13 // IDENTITY</p>
+                        <h3>Brand Design</h3>
+                    </div>
+                </div>
             </div>
+
+             <!-- 14 R&D (Square 1x1) -->
+            <div class="bento-item bento-square group" style="--accent: var(--accent-2);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner">
+                    <div class="card-icon"><i data-lucide="microscope"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">14 // INNOVATE</p>
+                        <h3>R & D</h3>
+                    </div>
+                </div>
+            </div>
+
+             <!-- 15 Office Auto (Wide 2x1) -->
+            <div class="bento-item bento-wide group" style="--accent: var(--accent-3);">
+                <div class="card-ambient"></div>
+                <div class="bento-inner horizontal-layout">
+                    <div class="card-icon"><i data-lucide="briefcase"></i></div>
+                    <div class="text-group">
+                        <p class="bento-tag">15 // WORKFLOW</p>
+                        <h3>Office Automation</h3>
+                        <p class="bento-desc">Enterprise robotic process automation designed to radically collapse daily structural overheads.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer>
@@ -107,7 +224,8 @@
         </footer>
     </div>
 
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
