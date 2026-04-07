@@ -1,17 +1,28 @@
+/* --- DESKTOP LENIS --- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* --- CSS VARIABLES --- */
 :root {
-    --bg-color: #030303;
+    --bg-color: #000000;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-border-hover: rgba(255, 255, 255, 0.2);
+    
     --text-primary: #FFFFFF;
-    --text-secondary: #A1A1AA;
+    --text-secondary: #888888;
 
-    --accent-1: #4F46E5;
-    --accent-2: #9333EA;
-    --accent-3: #EC4899;
-    --accent-4: #06B6D4;
-
-    --glass-bg: rgba(255, 255, 255, 0.02);
-    --glass-border: rgba(255, 255, 255, 0.06);
-    --glass-highlight: rgba(255, 255, 255, 0.1);
+    --accent-glow: rgba(255, 255, 255, 0.15);
 }
 
 * {
@@ -19,13 +30,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--bg-color);
+    background: radial-gradient(ellipse at 50% -20%, #1a1a24 0%, #000000 70%);
+    background-attachment: fixed;
     color: var(--text-primary);
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
 h1, h2, h3 { font-family: 'Outfit', sans-serif; }
@@ -44,9 +56,9 @@ body::after {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
-    background: #000;
+    /* Removed the solid #000 background so the body gradient shows through */
 }
 
 #particles-bg {
@@ -61,7 +73,7 @@ body::after {
     position: absolute;
     border-radius: 50%;
     filter: blur(140px);
-    opacity: 0.35;
+    opacity: 0.05; /* massively reduced opacity for monochrome aesthetic */
     animation: float 40s infinite ease-in-out alternate;
     mix-blend-mode: screen;
 }
@@ -112,22 +124,23 @@ header {
 }
 
 .brand-subtitle {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
     color: var(--text-secondary);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 2rem;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     border: 1px solid var(--glass-border);
-    padding: 8px 24px;
+    padding: 10px 28px;
     border-radius: 50px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.02);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px -5px rgba(0,0,0,0.5);
     animation: fadeInDown 1s ease-out;
 }
 
@@ -144,34 +157,28 @@ header {
 }
 
 h1 {
+    font-family: 'Outfit', sans-serif;
     font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: -0.04em;
-    line-height: 1.05;
+    line-height: 1;
     margin-bottom: 1.5rem;
     animation: fadeInDown 1s ease-out 0.1s both;
 }
 
 h1 span {
-    background: linear-gradient(135deg, var(--accent-4), var(--accent-2), var(--accent-3));
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 5s linear infinite;
-}
-
-@keyframes shine {
-    to { background-position: 200% center; }
+    font-weight: 300;
+    color: var(--text-secondary);
 }
 
 .hero-desc {
     color: var(--text-secondary);
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
-    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.7;
     font-weight: 400;
+    letter-spacing: -0.01em;
     animation: fadeInDown 1s ease-out 0.2s both;
 }
 
@@ -196,19 +203,17 @@ h1 span {
 }
 
 .bento-item {
-    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-    border: 1px solid var(--glass-border);
-    border-radius: 36px; /* Massive Apple-like radius */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px; /* Modern rigid curve */
     padding: 2.5rem;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     
-    /* 3D and Hover Animation */
     transform-style: preserve-3d;
-    transition: box-shadow 0.2s ease, border-color 0.4s ease;
+    transition: transform 0.2s ease, border-color 0.4s ease;
     will-change: transform;
     
     opacity: 0;
@@ -245,47 +250,48 @@ h1 span {
 }
 
 .card-icon {
-    width: 60px; height: 60px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-primary);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    /* Prevent icon from squishing in horizontal layouts */
+    color: #fff;
     flex-shrink: 0;
 }
 
 .card-icon i, .card-icon svg {
-    width: 28px; height: 28px;
+    width: 20px; height: 20px;
+    stroke-width: 1.5;
 }
 
 .bento-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
+    font-weight: 500;
     color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     margin-bottom: 0.75rem;
 }
 
 .bento-item h3 {
-    font-size: clamp(1.4rem, 2vw, 1.8rem);
-    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    font-weight: 500;
     color: #fff;
     margin-bottom: 0.5rem;
     line-height: 1.2;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .bento-large h3 {
-    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
 }
 
 .bento-desc {
-    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-top: 0.5rem;
@@ -296,59 +302,45 @@ h1 span {
     display: none;
 }
 
-/* Ambient Cursor Lighting */
+/* --- LINEAR GLOW ENGINE --- */
+#cards-wrapper {
+    position: relative;
+}
+
 .card-ambient {
+    display: none; /* Disabled blob logic */
+}
+
+/* High-tech border mask trick */
+#cards-wrapper:hover .bento-item::before {
+    opacity: 1;
+}
+
+.bento-item::before {
+    content: "";
     position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: var(--accent); /* Inherits from inline style */
-    filter: blur(100px);
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 0.4s ease;
-    transform: translate(calc(var(--mouse-x, 0px) - 200px), calc(var(--mouse-y, 0px) - 200px));
+    inset: 0px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(255,255,255,0.25),
+        transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
-    will-change: transform, opacity;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
 }
 
-/* Desktop Hover Interactions */
 @media (hover: hover) and (pointer: fine) {
-    .bento-item:hover .card-ambient {
-        opacity: 0.2; /* Light up inner orb */
-    }
     .bento-item:hover {
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        background: rgba(255,255,255,0.03);
     }
-    /* Inner Ring Laser Glow */
-    .bento-item::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 36px;
-        padding: 1px;
-        background: radial-gradient(
-            500px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), 
-            rgba(255,255,255,0.4), 
-            transparent 40%
-        );
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        z-index: 10;
-    }
-    .bento-item:hover::after {
-        opacity: 1;
-    }
-}
-
-/* JS Transition Classes */
-.tilt-snapback {
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.2, 1), box-shadow 0.6s ease !important;
 }
 
 /* --- FOOTER --- */
@@ -420,25 +412,19 @@ footer::before {
 
     .bento-item {
         padding: 1.5rem;
-        border-radius: 28px;
+        border-radius: 16px;
         grid-column: span 1 !important;
         grid-row: span 1 !important;
     }
     
-    /* JS Scroll-Focus Mobile Effect Defaults */
     .bento-grid.has-focus .bento-item:not(.mobile-focus) {
-        transform: scale(0.92) !important;
-        opacity: 0.35 !important;
-        filter: blur(3px) !important;
+        opacity: 0.5;
     }
 
-    /* Active focused item on mobile */
     .bento-item.mobile-focus {
-        transform: scale(1.02) !important;
-        opacity: 1 !important;
-        filter: blur(0px) !important;
-        z-index: 10;
-        /* box-shadow and border color appended via JS */
+        opacity: 1;
+        border-color: rgba(255,255,255,0.15);
+        background: rgba(255,255,255,0.04);
     }
 
     .bento-item h3 {
